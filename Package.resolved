@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "compute",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-cloud/Compute",
+      "state" : {
+        "revision" : "c76b389b3d6c958788fbf21241e31107c5697a53",
+        "version" : "2.4.1"
+      }
+    },
+    {
+      "identity" : "cryptoswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/CryptoSwift.git",
+      "state" : {
+        "revision" : "19b3c3ceed117c5cc883517c4e658548315ba70b",
+        "version" : "1.6.0"
+      }
+    }
+  ],
+  "version" : 2
+}
