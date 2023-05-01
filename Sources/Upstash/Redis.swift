@@ -12,14 +12,14 @@ public protocol RedisResponse: Decodable {
     var result: Result { get }
 }
 
-public struct RedisClient {
+public struct RedisClient: Sendable {
 
     public let hostname: String
 
     private let token: String
 
     public init(hostname: String, token: String) {
-        self.hostname = hostname
+        self.hostname = hostname.replacingOccurrences(of: "https://", with: "")
         self.token = token
     }
 }
