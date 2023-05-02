@@ -276,19 +276,25 @@ public struct RedisResult: Decodable {
     }
 
     /// Value of the claim as `Decodable`.
-    func decode<T>(_ type: T.Type, decoder: JSONDecoder = .init()) throws -> T where T: Decodable {
-        guard let json = self.value as? String else {
+    public func decode<T>(_ type: T.Type, decoder: JSONDecoder = .init()) throws -> T where T: Decodable {
+        if let value = value as? T {
+            return value
+        }
+        guard let text = self.value as? String else {
             throw RedisError(error: "Invalid json value")
         }
-        return try decoder.decode(type, from: .init(json.utf8))
+        return try decoder.decode(type, from: .init(text.utf8))
     }
 
     /// Value of the claim as `Decodable`.
-    func decode<T>(decoder: JSONDecoder = .init()) throws -> T where T: Decodable {
-        guard let json = self.value as? String else {
+    public func decode<T>(decoder: JSONDecoder = .init()) throws -> T where T: Decodable {
+        if let value = value as? T {
+            return value
+        }
+        guard let text = self.value as? String else {
             throw RedisError(error: "Invalid json value")
         }
-        return try decoder.decode(T.self, from: .init(json.utf8))
+        return try decoder.decode(T.self, from: .init(text.utf8))
     }
 }
 
