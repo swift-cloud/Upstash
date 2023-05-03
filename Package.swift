@@ -14,9 +14,10 @@ let package = Package(
         .library(name: "Upstash", targets: ["Upstash"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-cloud/Compute", from: "2.0.0")
+        .package(url: "https://github.com/swift-cloud/Compute", from: "2.0.0"),
+        .package(url: "https://github.com/flight-school/anycodable", from: "0.6.7")
     ],
     targets: [
-        .target(name: "Upstash", dependencies: ["Compute"])
+        .target(name: "Upstash", dependencies: ["Compute", .product(name: "AnyCodable", package: "anycodable")])
     ]
 )
